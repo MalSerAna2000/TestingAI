@@ -1,0 +1,17 @@
+[remap]
+
+importer="wavefront_obj"
+type="ArrayMesh"
+path="res://.godot/imported/dark_god_hair_white.obj-4b35811e5b3faa84d76762f283d003a0.mesh"
+
+[deps]
+
+source_file="res://assets/models/dark_god_hair_white.obj"
+dest_files=["res://.godot/imported/dark_god_hair_white.obj-4b35811e5b3faa84d76762f283d003a0.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh_flags=428

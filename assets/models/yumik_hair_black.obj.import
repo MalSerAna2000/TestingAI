@@ -1,0 +1,17 @@
+[remap]
+
+importer="wavefront_obj"
+type="ArrayMesh"
+path="res://.godot/imported/yumik_hair_black.obj-cc7ddac3d4966f9b10890677a2c78b89.mesh"
+
+[deps]
+
+source_file="res://assets/models/yumik_hair_black.obj"
+dest_files=["res://.godot/imported/yumik_hair_black.obj-cc7ddac3d4966f9b10890677a2c78b89.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh_flags=428

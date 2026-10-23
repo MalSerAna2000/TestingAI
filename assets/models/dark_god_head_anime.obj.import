@@ -1,0 +1,17 @@
+[remap]
+
+importer="wavefront_obj"
+type="ArrayMesh"
+path="res://.godot/imported/dark_god_head_anime.obj-a2d84a114258926ace5c3bf4854d0ed5.mesh"
+
+[deps]
+
+source_file="res://assets/models/dark_god_head_anime.obj"
+dest_files=["res://.godot/imported/dark_god_head_anime.obj-a2d84a114258926ace5c3bf4854d0ed5.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh_flags=428

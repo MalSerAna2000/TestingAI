@@ -1,0 +1,21 @@
+[gd_resource type="ShaderMaterial" load_steps=8 format=3]
+
+[ext_resource type="Shader" path="res://assets/materials/terrain_ps3.gdshader" id="1"]
+[ext_resource type="Texture2D" path="res://assets/textures/terrain/plains_grass_albedo.tga" id="2"]
+[ext_resource type="Texture2D" path="res://assets/textures/terrain/plains_grass_normal.tga" id="3"]
+[ext_resource type="Texture2D" path="res://assets/textures/terrain/plains_grass_roughness.tga" id="4"]
+[ext_resource type="Texture2D" path="res://assets/textures/terrain/mountain_rock_albedo.tga" id="5"]
+[ext_resource type="Texture2D" path="res://assets/textures/terrain/mountain_rock_normal.tga" id="6"]
+[ext_resource type="Texture2D" path="res://assets/textures/terrain/mountain_rock_roughness.tga" id="7"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1")
+shader_parameter/grass_albedo = ExtResource("2")
+shader_parameter/grass_normal = ExtResource("3")
+shader_parameter/grass_roughness = ExtResource("4")
+shader_parameter/rock_albedo = ExtResource("5")
+shader_parameter/rock_normal = ExtResource("6")
+shader_parameter/rock_roughness = ExtResource("7")
+shader_parameter/uv_scale_grass = 0.085
+shader_parameter/uv_scale_rock = 0.045

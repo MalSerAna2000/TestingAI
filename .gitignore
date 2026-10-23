@@ -1,0 +1,8 @@
+# Godot 4+ specific ignores
+.godot/
+
+# Android / export binaries (project delivers pure Godot 4.7.2 source)
+*.apk
+*.aab
+*.pck
+*.zip

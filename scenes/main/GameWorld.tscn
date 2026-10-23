@@ -1,0 +1,73 @@
+[gd_scene load_steps=13 format=3]
+
+[ext_resource type="Script" path="res://scripts/world/game_world.gd" id="1_world"]
+[ext_resource type="Texture2D" path="res://assets/textures/sky/night_stars_panorama.png" id="2_stars"]
+[ext_resource type="Script" path="res://scripts/world/day_night_cycle.gd" id="3_daynight"]
+[ext_resource type="Script" path="res://scripts/world/chunk_manager.gd" id="4_chunks"]
+[ext_resource type="Script" path="res://scripts/castle/world_aero_atmosphere.gd" id="5_atmo"]
+[ext_resource type="PackedScene" path="res://scenes/castle/InflatableCastle.tscn" id="6_castle"]
+[ext_resource type="PackedScene" path="res://scenes/characters/Yumik.tscn" id="7_yumik"]
+[ext_resource type="PackedScene" path="res://scenes/ui/TouchHUD.tscn" id="8_hud"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_main"]
+rayleigh_coefficient = 3.0
+mie_coefficient = 0.006
+turbidity = 5.0
+ground_color = Color(0.08, 0.09, 0.12, 1)
+energy_multiplier = 0.52
+sky_cover = ExtResource("2_stars")
+
+[sub_resource type="Sky" id="Sky_main"]
+sky_material = SubResource("PhysicalSkyMaterial_main")
+
+[sub_resource type="Environment" id="Environment_main"]
+background_mode = 2
+sky = SubResource("Sky_main")
+ambient_light_source = 2
+ambient_light_color = Color(0.18, 0.2, 0.32, 1)
+ambient_light_energy = 0.68
+tonemap_mode = 2
+fog_enabled = true
+fog_light_color = Color(0.11, 0.12, 0.22, 1)
+fog_density = 0.00055
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_atmo"]
+size = Vector3(60000, 4000, 60000)
+
+[node name="GameWorld" type="Node3D"]
+script = ExtResource("1_world")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_main")
+
+[node name="SunLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.848048, 0.461749, -0.258819, 0, 0.488621, 0.872496, 0.529919, -0.73992, 0.414716, 0, 60, 0)
+light_energy = 0.0
+shadow_enabled = true
+
+[node name="MoonLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.882948, -0.369644, 0.289784, 0, 0.616931, 0.787018, -0.469472, -0.694896, 0.544711, 0, 60, 0)
+light_color = Color(0.66, 0.75, 1, 1)
+light_energy = 0.52
+shadow_enabled = true
+
+[node name="DayNightCycle" type="Node3D" parent="."]
+script = ExtResource("3_daynight")
+
+[node name="WorldAeroAtmosphere3D" type="Area3D" parent="."]
+script = ExtResource("5_atmo")
+override_wind = true
+
+[node name="AtmosphereBounds" type="CollisionShape3D" parent="WorldAeroAtmosphere3D"]
+shape = SubResource("BoxShape3D_atmo")
+
+[node name="ChunkManager" type="Node3D" parent="."]
+script = ExtResource("4_chunks")
+
+[node name="InflatableCastle" parent="." instance=ExtResource("6_castle")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4, 0)
+
+[node name="Yumik" parent="." instance=ExtResource("7_yumik")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.55, 50)
+
+[node name="TouchHUD" parent="." instance=ExtResource("8_hud")]

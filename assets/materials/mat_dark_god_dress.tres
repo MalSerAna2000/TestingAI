@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/characters/dark_god_dress_albedo.tga" id="1"]
+[ext_resource type="Texture2D" path="res://assets/textures/castle/castle_pvc_crimson_normal.tga" id="2"]
+
+[resource]
+cull_mode = 2
+albedo_texture = ExtResource("1")
+metallic = 0.05
+metallic_specular = 0.82
+roughness = 0.19
+normal_enabled = true
+normal_scale = 0.65
+normal_texture = ExtResource("2")
+rim_enabled = true
+rim = 0.45

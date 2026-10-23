@@ -1,0 +1,17 @@
+[remap]
+
+importer="wavefront_obj"
+type="ArrayMesh"
+path="res://.godot/imported/valley_pine_tree.obj-39aaa0541d487057c0ede98318eeeebb.mesh"
+
+[deps]
+
+source_file="res://assets/models/valley_pine_tree.obj"
+dest_files=["res://.godot/imported/valley_pine_tree.obj-39aaa0541d487057c0ede98318eeeebb.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh_flags=428

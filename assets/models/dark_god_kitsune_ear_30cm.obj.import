@@ -1,0 +1,17 @@
+[remap]
+
+importer="wavefront_obj"
+type="ArrayMesh"
+path="res://.godot/imported/dark_god_kitsune_ear_30cm.obj-530bd466c084613370810e44d12ffd9d.mesh"
+
+[deps]
+
+source_file="res://assets/models/dark_god_kitsune_ear_30cm.obj"
+dest_files=["res://.godot/imported/dark_god_kitsune_ear_30cm.obj-530bd466c084613370810e44d12ffd9d.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh_flags=428

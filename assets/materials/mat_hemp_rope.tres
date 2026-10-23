@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/castle/hemp_rope_albedo.tga" id="1"]
+[ext_resource type="Texture2D" path="res://assets/textures/castle/hemp_rope_normal.tga" id="2"]
+
+[resource]
+albedo_texture = ExtResource("1")
+roughness = 0.88
+normal_enabled = true
+normal_scale = 1.4
+normal_texture = ExtResource("2")
+uv1_scale = Vector3(1, 16, 1)

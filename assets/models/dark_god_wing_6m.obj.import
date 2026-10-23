@@ -1,0 +1,17 @@
+[remap]
+
+importer="wavefront_obj"
+type="ArrayMesh"
+path="res://.godot/imported/dark_god_wing_6m.obj-57747f9b332ec942527d1f2c44601aa6.mesh"
+
+[deps]
+
+source_file="res://assets/models/dark_god_wing_6m.obj"
+dest_files=["res://.godot/imported/dark_god_wing_6m.obj-57747f9b332ec942527d1f2c44601aa6.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh_flags=428

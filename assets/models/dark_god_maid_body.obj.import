@@ -1,0 +1,17 @@
+[remap]
+
+importer="wavefront_obj"
+type="ArrayMesh"
+path="res://.godot/imported/dark_god_maid_body.obj-90578e24f0d2e2685a4bc0847d298650.mesh"
+
+[deps]
+
+source_file="res://assets/models/dark_god_maid_body.obj"
+dest_files=["res://.godot/imported/dark_god_maid_body.obj-90578e24f0d2e2685a4bc0847d298650.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh_flags=428

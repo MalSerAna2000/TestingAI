@@ -1,0 +1,17 @@
+[remap]
+
+importer="wavefront_obj"
+type="ArrayMesh"
+path="res://.godot/imported/castle_angel_wing_33m.obj-8d170be37457d153a37845156e2f0fd6.mesh"
+
+[deps]
+
+source_file="res://assets/models/castle_angel_wing_33m.obj"
+dest_files=["res://.godot/imported/castle_angel_wing_33m.obj-8d170be37457d153a37845156e2f0fd6.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh_flags=428

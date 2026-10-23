@@ -1,0 +1,82 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://scripts/castle/inflatable_castle.gd" id="1_castle"]
+[ext_resource type="Script" path="res://addons/godot_aerodynamic_physics/core/aero_influencer_3d/aero_surface_3d/manual_aero_surface_3d/manual_aero_surface_3d.gd" id="2_aero_surf"]
+[ext_resource type="Script" path="res://addons/godot_aerodynamic_physics/core/aero_influencer_3d/drag_influencer/aero_drag_influencer.gd" id="3_aero_drag"]
+[ext_resource type="Material" path="res://assets/materials/mat_castle_pvc.tres" id="4_pvc_mat"]
+[ext_resource type="Material" path="res://assets/materials/mat_castle_wing.tres" id="5_wing_mat"]
+[ext_resource type="ArrayMesh" path="res://assets/models/castle_quilted_wall.obj" id="6_wall_mesh"]
+[ext_resource type="ArrayMesh" path="res://assets/models/castle_corner_tower_50m.obj" id="7_tower_mesh"]
+[ext_resource type="ArrayMesh" path="res://assets/models/castle_angel_wing_33m.obj" id="8_wing_mesh"]
+
+[node name="InflatableCastle" type="VehicleBody3D"]
+mass = 4800.0
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("1_castle")
+
+[node name="AeroWingEast33m" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 19.5, 0)
+script = ExtResource("2_aero_surf")
+
+[node name="AeroWingWest33m" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 19.5, 0)
+script = ExtResource("2_aero_surf")
+
+[node name="AeroWingNorth33m" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20.5, -28)
+script = ExtResource("2_aero_surf")
+
+[node name="BodyCoreDrag" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.5, 0)
+script = ExtResource("3_aero_drag")
+radius = 15.5
+drag_coefficient = 0.92
+
+[node name="UpperWallDrag" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30, 0)
+script = ExtResource("3_aero_drag")
+radius = 11.5
+drag_coefficient = 0.92
+
+[node name="EditorPreviewRoot" type="Node3D" parent="."]
+
+[node name="PreviewMainHall33m" type="MeshInstance3D" parent="EditorPreviewRoot"]
+transform = Transform3D(33, 0, 0, 0, 33, 0, 0, 0, 33, 0, 16.5, 0)
+material_override = ExtResource("4_pvc_mat")
+mesh = ExtResource("6_wall_mesh")
+
+[node name="PreviewTowerNW" type="MeshInstance3D" parent="EditorPreviewRoot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 0, -15.5)
+material_override = ExtResource("4_pvc_mat")
+mesh = ExtResource("7_tower_mesh")
+
+[node name="PreviewTowerNE" type="MeshInstance3D" parent="EditorPreviewRoot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0, -15.5)
+material_override = ExtResource("4_pvc_mat")
+mesh = ExtResource("7_tower_mesh")
+
+[node name="PreviewTowerSW" type="MeshInstance3D" parent="EditorPreviewRoot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 0, 15.5)
+material_override = ExtResource("4_pvc_mat")
+mesh = ExtResource("7_tower_mesh")
+
+[node name="PreviewTowerSE" type="MeshInstance3D" parent="EditorPreviewRoot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0, 15.5)
+material_override = ExtResource("4_pvc_mat")
+mesh = ExtResource("7_tower_mesh")
+
+[node name="PreviewWingEast" type="MeshInstance3D" parent="EditorPreviewRoot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.2, 19.5, 0)
+material_override = ExtResource("5_wing_mat")
+mesh = ExtResource("8_wing_mesh")
+
+[node name="PreviewWingWest" type="MeshInstance3D" parent="EditorPreviewRoot"]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, -16.2, 19.5, 0)
+material_override = ExtResource("5_wing_mat")
+mesh = ExtResource("8_wing_mesh")
+
+[node name="PreviewWingNorth" type="MeshInstance3D" parent="EditorPreviewRoot"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 20.5, -16.2)
+material_override = ExtResource("5_wing_mat")
+mesh = ExtResource("8_wing_mesh")

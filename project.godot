@@ -1,0 +1,79 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Темный Бог Надувных Замков"
+config/description="Физический 3D-прототип в открытом мире на Godot 4.7.2 (Jolt Physics + Godot Aerodynamic Physics v0.9.1) с полностью сенсорным управлением."
+run/main_scene="res://scenes/ui/MainMenu.tscn"
+config/features=PackedStringArray("4.7", "Mobile")
+config/icon="res://icon.png"
+
+[audio]
+
+buses/default_bus_layout="res://assets/audio/default_bus_layout.tres"
+
+[autoload]
+
+AeroUnits="*res://addons/godot_aerodynamic_physics/core/singletons/aero_units.gd"
+GameState="*res://scripts/autoload/game_state.gd"
+WindManager="*res://scripts/autoload/wind_manager.gd"
+AudioManager="*res://scripts/autoload/audio_manager.gd"
+
+[display]
+
+window/size/viewport_width=1600
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/handheld/orientation=0
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_aerodynamic_physics/plugin.cfg", "res://addons/virtual_joystick/plugin.cfg")
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+pointing/emulate_mouse_from_touch=false
+
+[layer_names]
+
+3d_physics/layer_1="Terrain"
+3d_physics/layer_2="Water"
+3d_physics/layer_3="Castle"
+3d_physics/layer_4="CastleRopes"
+3d_physics/layer_5="Player"
+3d_physics/layer_6="PlayerRagdoll"
+3d_physics/layer_7="DarkGod"
+3d_physics/layer_8="Triggers"
+3d_physics/layer_15="Atmosphere Areas"
+
+[physics]
+
+common/physics_ticks_per_second=60
+3d/physics_engine="Jolt Physics"
+3d/default_gravity=9.8
+3d/default_linear_damp=0.0
+3d/default_angular_damp=0.0
+jolt_physics_3d/simulation/velocity_steps=12
+jolt_physics_3d/simulation/position_steps=4
+jolt_physics_3d/simulation/bounce_velocity_threshold=0.15
+aerodynamics/substeps=4
+aerodynamics/atmosphere_area_collision_layer=15
+
+[rendering]
+
+renderer/rendering_method="mobile"
+renderer/rendering_method.mobile="mobile"
+textures/vram_compression/import_etc2_astc=true
+textures/canvas_textures/default_texture_filter=1
+anti_aliasing/quality/msaa_3d=1
+lights_and_shadows/directional_shadow/size=2048

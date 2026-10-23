@@ -1,0 +1,17 @@
+[remap]
+
+importer="wavefront_obj"
+type="ArrayMesh"
+path="res://.godot/imported/castle_gate_leaf.obj-ffb2fd29cd554ca9a19a63d74274561b.mesh"
+
+[deps]
+
+source_file="res://assets/models/castle_gate_leaf.obj"
+dest_files=["res://.godot/imported/castle_gate_leaf.obj-ffb2fd29cd554ca9a19a63d74274561b.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh_flags=428
