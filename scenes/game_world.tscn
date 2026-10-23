@@ -1,0 +1,76 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://scripts/world/game_world.gd" id="1_gw"]
+[ext_resource type="Texture2D" path="res://assets/textures/night_sky_milkyway.hdr" id="2_nsky"]
+[ext_resource type="Script" path="res://scripts/world/day_night_cycle.gd" id="3_dnc"]
+[ext_resource type="Script" path="res://scripts/world/terrain_chunk_manager.gd" id="4_tcm"]
+[ext_resource type="Script" uid="uid://oce3ma8abugl" path="res://addons/godot_aerodynamic_physics/core/aero_atmosphere_3d/aero_atmosphere_3d.gd" id="5_atmo"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_valley"]
+rayleigh_coefficient = 1.6
+mie_coefficient = 0.005
+turbidity = 6.0
+sun_disk_scale = 1.35
+ground_color = Color(0.08, 0.1, 0.13, 1)
+energy_multiplier = 0.45
+use_debanding = true
+night_sky = ExtResource("2_nsky")
+
+[sub_resource type="Sky" id="Sky_valley"]
+sky_material = SubResource("PhysicalSkyMaterial_valley")
+radiance_size = 2
+
+[sub_resource type="Environment" id="Environment_valley"]
+background_mode = 2
+sky = SubResource("Sky_valley")
+ambient_light_source = 3
+ambient_light_color = Color(0.22, 0.27, 0.46, 1)
+ambient_light_sky_contribution = 0.65
+ambient_light_energy = 0.38
+tonemap_mode = 2
+glow_enabled = true
+glow_intensity = 0.45
+glow_bloom = 0.08
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_atmo"]
+size = Vector3(60000, 12000, 60000)
+
+[node name="GameWorld" type="Node3D"]
+script = ExtResource("1_gw")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_valley")
+
+[node name="SunLight" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.882948, 0.406737, -0.234829, 0, 0.5, 0.866025, 0.469472, -0.764655, 0.441474, 0, 60, 0)
+light_color = Color(1, 0.95, 0.88, 1)
+light_energy = 0.0
+shadow_enabled = true
+directional_shadow_max_distance = 180.0
+
+[node name="MoonLight" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.882948, -0.406737, 0.234829, 0, 0.5, 0.866025, -0.469472, -0.764655, 0.441474, 0, 60, 0)
+light_color = Color(0.66, 0.78, 1, 1)
+light_energy = 0.42
+shadow_enabled = true
+directional_shadow_max_distance = 160.0
+
+[node name="DayNightCycle" type="Node3D" parent="."]
+script = ExtResource("3_dnc")
+sun_light_path = NodePath("../SunLight")
+moon_light_path = NodePath("../MoonLight")
+world_env_path = NodePath("../WorldEnvironment")
+
+[node name="TerrainChunkManager" type="Node3D" parent="."]
+script = ExtResource("4_tcm")
+
+[node name="WorldWindAtmosphere" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 16384
+monitorable = false
+script = ExtResource("5_atmo")
+wind = Vector3(2.2, 0, -1.2)
+metadata/_custom_type_script = "uid://oce3ma8abugl"
+
+[node name="AtmosphereCollision" type="CollisionShape3D" parent="WorldWindAtmosphere"]
+shape = SubResource("BoxShape3D_atmo")

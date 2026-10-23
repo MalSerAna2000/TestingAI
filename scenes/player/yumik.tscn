@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/player/yumik_controller.gd" id="1_yumik"]
+
+[node name="PlayerYumik" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 29
+script = ExtResource("1_yumik")

@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/yumik_face_hair_albedo.tga" id="1_alb"]
+[ext_resource type="Texture2D" path="res://assets/textures/yumik_face_hair_normal.tga" id="2_nrm"]
+
+[resource]
+resource_name = "mat_yumik_face_hair"
+albedo_texture = ExtResource("1_alb")
+roughness = 0.44
+normal_enabled = true
+normal_texture = ExtResource("2_nrm")

@@ -1,0 +1,22 @@
+[gd_resource type="ShaderMaterial" load_steps=10 format=3]
+
+[ext_resource type="Shader" path="res://assets/shaders/terrain_biomes.gdshader" id="1_sh"]
+[ext_resource type="Texture2D" path="res://assets/textures/biome_plains_grass_albedo.tga" id="2_ga"]
+[ext_resource type="Texture2D" path="res://assets/textures/biome_plains_grass_normal.tga" id="3_gn"]
+[ext_resource type="Texture2D" path="res://assets/textures/biome_plains_grass_orm.tga" id="4_go"]
+[ext_resource type="Texture2D" path="res://assets/textures/biome_mountain_rock_albedo.tga" id="5_ra"]
+[ext_resource type="Texture2D" path="res://assets/textures/biome_mountain_rock_normal.tga" id="6_rn"]
+[ext_resource type="Texture2D" path="res://assets/textures/biome_mountain_rock_orm.tga" id="7_ro"]
+[ext_resource type="Texture2D" path="res://assets/textures/biome_water_bed_albedo.tga" id="8_ba"]
+[ext_resource type="Texture2D" path="res://assets/textures/biome_water_bed_normal.tga" id="9_bn"]
+
+[resource]
+shader = ExtResource("1_sh")
+shader_parameter/grass_albedo = ExtResource("2_ga")
+shader_parameter/grass_normal = ExtResource("3_gn")
+shader_parameter/grass_orm = ExtResource("4_go")
+shader_parameter/rock_albedo = ExtResource("5_ra")
+shader_parameter/rock_normal = ExtResource("6_rn")
+shader_parameter/rock_orm = ExtResource("7_ro")
+shader_parameter/waterbed_albedo = ExtResource("8_ba")
+shader_parameter/waterbed_normal = ExtResource("9_bn")

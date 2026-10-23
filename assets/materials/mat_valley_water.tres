@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3]
+
+[ext_resource type="Shader" path="res://assets/shaders/valley_water.gdshader" id="1_wsh"]
+[ext_resource type="Texture2D" path="res://assets/textures/water_waves_normal.tga" id="2_wn"]
+
+[resource]
+render_priority = 1
+shader = ExtResource("1_wsh")
+shader_parameter/wave_normal = ExtResource("2_wn")

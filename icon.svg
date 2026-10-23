@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0b091a"/>
+      <stop offset="100%" stop-color="#260c1f"/>
+    </linearGradient>
+    <linearGradient id="castle" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#a8132b"/>
+      <stop offset="55%" stop-color="#6b081b"/>
+      <stop offset="100%" stop-color="#3a040f"/>
+    </linearGradient>
+    <linearGradient id="wing" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#4d0716"/>
+      <stop offset="100%" stop-color="#9e112b"/>
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" rx="42" fill="url(#bg)"/>
+  <circle cx="196" cy="52" r="22" fill="#dce8ff" opacity="0.88"/>
+  <!-- Left & Right Angel Wings -->
+  <path d="M74 148 C22 104, 12 66, 36 52 C52 72, 68 88, 84 112 Z" fill="url(#wing)" stroke="#ff4f73" stroke-width="3"/>
+  <path d="M182 148 C234 104, 244 66, 220 52 C204 72, 188 88, 172 112 Z" fill="url(#wing)" stroke="#ff4f73" stroke-width="3"/>
+  <!-- Corner Inflatable Towers -->
+  <rect x="64" y="64" width="24" height="148" rx="10" fill="url(#castle)" stroke="#f5d0da" stroke-width="2.5"/>
+  <rect x="168" y="64" width="24" height="148" rx="10" fill="url(#castle)" stroke="#f5d0da" stroke-width="2.5"/>
+  <!-- Castle Main Body -->
+  <rect x="82" y="96" width="92" height="116" rx="16" fill="url(#castle)" stroke="#ffccd8" stroke-width="3"/>
+  <!-- Kitsune Ears -->
+  <polygon points="104,96 116,62 126,96" fill="#fff4f7" stroke="#b31530" stroke-width="2.5"/>
+  <polygon points="130,96 140,62 152,96" fill="#fff4f7" stroke="#b31530" stroke-width="2.5"/>
+  <!-- >_< Crimson Anime Eyes -->
+  <path d="M100 132 L118 140 L100 148" fill="none" stroke="#ff2a55" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M156 132 L138 140 L156 148" fill="none" stroke="#ff2a55" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Gate -->
+  <path d="M113 212 L113 176 A15 15 0 0 1 143 176 L143 212 Z" fill="#14040a" stroke="#ffd8e2" stroke-width="2.5"/>
+</svg>
