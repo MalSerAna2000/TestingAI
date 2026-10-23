@@ -1,0 +1,78 @@
+[gd_scene load_steps=2 format=3 uid="0f43b2ffa6574507895724e0b5a7d199"]
+
+[ext_resource path="res://scripts/debug_menu.gd" type="Script" id=3]
+
+[node name="DebugMenu" type="Node" parent="."]
+    script = ExtResource(3)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="DebugMenu"]
+
+[node name="Bg" type="ColorRect" parent="DebugMenu/CanvasLayer"]
+    anchors_preset = 15
+    color = Color(0, 0, 0, 0.7)
+
+[node name="Title" type="Label" parent="DebugMenu/CanvasLayer"]
+    rect_position = Vector2(440, 40)
+    rect_size = Vector2(400, 50)
+    text = МЕНЮ ОТЛАДКИ
+
+[node name="BtnStateN" type="Button" parent="DebugMenu/CanvasLayer"]
+    rect_position = Vector2(520, 120)
+    rect_size = Vector2(240, 38)
+    text = Состояние замка: Обычное
+
+[node name="BtnStateS" type="Button" parent="DebugMenu/CanvasLayer"]
+    rect_position = Vector2(520, 166)
+    rect_size = Vector2(240, 38)
+    text = Состояние замка: Всасывание
+
+[node name="BtnStateF" type="Button" parent="DebugMenu/CanvasLayer"]
+    rect_position = Vector2(520, 212)
+    rect_size = Vector2(240, 38)
+    text = Состояние замка: Летающее
+
+[node name="BtnTeleport" type="Button" parent="DebugMenu/CanvasLayer"]
+    rect_position = Vector2(520, 258)
+    rect_size = Vector2(240, 38)
+    text = Телепортация к замку
+
+[node name="BtnSkipSleep" type="Button" parent="DebugMenu/CanvasLayer"]
+    rect_position = Vector2(520, 304)
+    rect_size = Vector2(240, 38)
+    text = Пропуск сцены снада
+
+[node name="LblWind" type="Label" parent="DebugMenu/CanvasLayer"]
+    rect_position = Vector2(520, 350)
+    rect_size = Vector2(240, 24)
+    text = Ветер:
+
+[node name="BtnWind0" type="Button" parent="DebugMenu/CanvasLayer"]
+    rect_position = Vector2(520, 380)
+    rect_size = Vector2(240, 34)
+    text = Штиль (1 км/ч)
+
+[node name="BtnWind1" type="Button" parent="DebugMenu/CanvasLayer"]
+    rect_position = Vector2(520, 420)
+    rect_size = Vector2(240, 34)
+    text = Слабый ветер (15 км/ч)
+
+[node name="BtnWind2" type="Button" parent="DebugMenu/CanvasLayer"]
+    rect_position = Vector2(520, 460)
+    rect_size = Vector2(240, 34)
+    text = Свежий ветер (35 км/ч)
+
+[node name="BtnWind3" type="Button" parent="DebugMenu/CanvasLayer"]
+    rect_position = Vector2(520, 500)
+    rect_size = Vector2(240, 34)
+    text = Очень крепкий ветер (70 км/ч)
+
+[node name="BtnWind4" type="Button" parent="DebugMenu/CanvasLayer"]
+    rect_position = Vector2(520, 540)
+    rect_size = Vector2(240, 34)
+    text = Ураган (120 км/ч)
+
+[node name="BtnClose" type="Button" parent="DebugMenu/CanvasLayer"]
+    rect_position = Vector2(520, 590)
+    rect_size = Vector2(240, 40)
+    text = Закрыть
+

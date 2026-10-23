@@ -1,0 +1,13 @@
+# Godot
+.godot/
+*.import
+import.cfg
+*.translation
+# Exports
+export_*
+# OS
+.DS_Store
+Thumbs.db
+
+# Разбалловка размера проекта (текстуры деталей, не отслеживаются git)
+assets/textures/detail/

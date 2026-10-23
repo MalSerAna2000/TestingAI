@@ -1,0 +1,445 @@
+[gd_scene load_steps=44 format=3 uid="9571418553c644d080ffa691b9500e94"]
+
+[ext_resource path="res://scripts/main.gd" type="Script" id=1]
+[ext_resource path="res://scripts/player_controller.gd" type="Script" id=6]
+[ext_resource path="res://scripts/castle_controller.gd" type="Script" id=7]
+[ext_resource path="res://scripts/touch_joystick.gd" type="Script" id=10]
+[ext_resource path="res://scripts/touch_camera.gd" type="Script" id=11]
+[ext_resource path="res://scripts/hud.gd" type="Script" id=12]
+[ext_resource path="res://addons/godot_aerodynamic_physics/aero_body_3d.gd" type="Script" id=14]
+[ext_resource path="res://addons/godot_aerodynamic_physics/aero_influencer_3d.gd" type="Script" id=15]
+[ext_resource path="res://assets/textures/grass_albedo.png" type="Texture2D" id=100]
+[ext_resource path="res://assets/textures/stone_albedo.png" type="Texture2D" id=103]
+[ext_resource path="res://assets/textures/water_albedo.png" type="Texture2D" id=106]
+[ext_resource path="res://assets/textures/pvc_albedo.png" type="Texture2D" id=108]
+[ext_resource path="res://assets/textures/fabric_albedo.png" type="Texture2D" id=111]
+[ext_resource path="res://assets/audio/ambient_wind.ogg" type="AudioStreamOGGVorbis" id=200]
+[ext_resource path="res://assets/audio/ambient_night.ogg" type="AudioStreamOGGVorbis" id=201]
+[ext_resource path="res://assets/audio/ambient_water.ogg" type="AudioStreamOGGVorbis" id=202]
+
+[sub_resource type="CapsuleShape3D" id=300]
+    radius = 0.4
+    height = 1.7
+
+[sub_resource type="BoxShape3D" id=301]
+    size = Vector3(33, 33, 33)
+
+[sub_resource type="BoxShape3D" id=302]
+    size = Vector3(3, 7, 2)
+
+[sub_resource type="BoxShape3D" id=303]
+    size = Vector3(25, 25, 25)
+
+[sub_resource type="BoxShape3D" id=304]
+    size = Vector3(2.5, 2.5, 5)
+
+[sub_resource type="BoxShape3D" id=305]
+    size = Vector3(3, 3, 3)
+
+[sub_resource type="CapsuleShape3D" id=306]
+    radius = 0.3
+    height = 75
+
+[sub_resource type="BoxShape3D" id=307]
+    size = Vector3(4, 8, 3)
+
+[sub_resource type="BoxMesh" id=310]
+    size = Vector3(33, 33, 33)
+
+[sub_resource type="BoxMesh" id=311]
+    size = Vector3(5, 50, 5)
+
+[sub_resource type="BoxMesh" id=312]
+    size = Vector3(66, 20, 2)
+
+[sub_resource type="BoxMesh" id=313]
+    size = Vector3(3, 7, 2)
+
+[sub_resource type="BoxMesh" id=314]
+    size = Vector3(2.5, 2.5, 5)
+
+[sub_resource type="BoxMesh" id=315]
+    size = Vector3(3, 3, 3)
+
+[sub_resource type="CapsuleMesh" id=316]
+    radius = 0.4
+    height = 1.7
+
+[sub_resource type="PlaneMesh" id=317]
+    size = Vector2(64, 64)
+    subdivide_width = 32
+    subdivide_depth = 32
+
+[sub_resource type="CapsuleMesh" id=318]
+    radius = 0.15
+    height = 2
+
+[sub_resource type="SpatialMaterial" id=320]
+    albedo_color = Color(0.5, 0.06, 0.1, 1)
+    albedo_texture = ExtResource(108)
+    roughness = 0.25
+    metallic = 0.1
+
+[sub_resource type="SpatialMaterial" id=321]
+    albedo_color = Color(0.8, 0.12, 0.18, 1)
+    albedo_texture = ExtResource(108)
+    roughness = 0.3
+    metallic = 0.1
+
+[sub_resource type="SpatialMaterial" id=322]
+    albedo_color = Color(0.4, 0.7, 0.35, 1)
+    albedo_texture = ExtResource(100)
+    roughness = 1.0
+
+[sub_resource type="SpatialMaterial" id=323]
+    albedo_color = Color(0.55, 0.55, 0.55, 1)
+    albedo_texture = ExtResource(103)
+    roughness = 0.9
+
+[sub_resource type="SpatialMaterial" id=324]
+    albedo_color = Color(0.2, 0.45, 0.65, 1)
+    albedo_texture = ExtResource(106)
+    roughness = 0.1
+
+[sub_resource type="SpatialMaterial" id=325]
+    albedo_color = Color(0.96, 0.78, 0.68, 1)
+
+[sub_resource type="SpatialMaterial" id=326]
+    albedo_color = Color(1, 0.75, 0.85, 1)
+    albedo_texture = ExtResource(111)
+    roughness = 0.9
+
+[sub_resource type="SpatialMaterial" id=327]
+    albedo_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Environment" id=330]
+    background = 1
+    background_sky = SubResource(331)
+    ambient_light = Color(0.12, 0.12, 0.16, 1)
+    ambient_light_source = 1
+
+[sub_resource type="PhysicalSkyMaterial" id=331]
+    sun = Vector3(0, -1, 0)
+    sky_atmosphere_contribution = 1.0
+    sun_energy = 1.8
+
+[node name="GameWorld" type="Node3D" parent="."]
+    script = ExtResource(1)
+
+[node name="Sun" type="DirectionalLight3D" parent="GameWorld"]
+    rotation_degrees = Vector3(35, -45, 0)
+    energy = 1.1
+    color = Color(1, 0.96, 0.88, 1)
+    shadow_enabled = true
+
+[node name="WorldEnv" type="WorldEnvironment" parent="GameWorld"]
+    environment = SubResource(330)
+
+[node name="Terrain" type="Node3D" parent="GameWorld"]
+
+[node name="CastleRoot" type="Node3D" parent="GameWorld"]
+
+[node name="Castle" type="CastleController" parent="GameWorld/CastleRoot"]
+    script = ExtResource(7)
+    mass = 30000.0
+    linear_damp = 0.4
+    angular_damp = 0.5
+    gravity_scale = 1.0
+    collision_layer = 2
+    collision_mask = 14
+    can_sleep = true
+
+[node name="BodyMesh" type="MeshInstance3D" parent="GameWorld/CastleRoot/Castle"]
+    mesh = SubResource(310)
+    material_override = SubResource(320)
+    cast_shadow = true
+
+[node name="BodyCol" type="CollisionShape3D" parent="GameWorld/CastleRoot/Castle"]
+    shape = SubResource(301)
+
+[node name="TowerNW" type="MeshInstance3D" parent="GameWorld/CastleRoot/Castle"]
+    mesh = SubResource(311)
+    material_override = SubResource(320)
+    position = Vector3(-14, 25, 14)
+    cast_shadow = true
+
+[node name="TowerNE" type="MeshInstance3D" parent="GameWorld/CastleRoot/Castle"]
+    mesh = SubResource(311)
+    material_override = SubResource(320)
+    position = Vector3(14, 25, 14)
+    cast_shadow = true
+
+[node name="TowerSW" type="MeshInstance3D" parent="GameWorld/CastleRoot/Castle"]
+    mesh = SubResource(311)
+    material_override = SubResource(320)
+    position = Vector3(-14, 25, -14)
+    cast_shadow = true
+
+[node name="TowerSE" type="MeshInstance3D" parent="GameWorld/CastleRoot/Castle"]
+    mesh = SubResource(311)
+    material_override = SubResource(320)
+    position = Vector3(14, 25, -14)
+    cast_shadow = true
+
+[node name="WingWest" type="MeshInstance3D" parent="GameWorld/CastleRoot/Castle"]
+    mesh = SubResource(312)
+    material_override = SubResource(321)
+    position = Vector3(-49.5, 10, 0)
+    cast_shadow = true
+
+[node name="WingEast" type="MeshInstance3D" parent="GameWorld/CastleRoot/Castle"]
+    mesh = SubResource(312)
+    material_override = SubResource(321)
+    position = Vector3(49.5, 10, 0)
+    cast_shadow = true
+
+[node name="WingNorth" type="MeshInstance3D" parent="GameWorld/CastleRoot/Castle"]
+    mesh = SubResource(312)
+    material_override = SubResource(321)
+    position = Vector3(0, 10, 49.5)
+    cast_shadow = true
+
+[node name="WingInflWest" type="AeroInfluencer3D" parent="GameWorld/CastleRoot/Castle"]
+    script = ExtResource(15)
+    position = Vector3(-49.5, 10, 0)
+    surface_area = 1320.0
+
+[node name="WingInflEast" type="AeroInfluencer3D" parent="GameWorld/CastleRoot/Castle"]
+    script = ExtResource(15)
+    position = Vector3(49.5, 10, 0)
+    surface_area = 1320.0
+
+[node name="WingInflNorth" type="AeroInfluencer3D" parent="GameWorld/CastleRoot/Castle"]
+    script = ExtResource(15)
+    position = Vector3(0, 10, 49.5)
+    surface_area = 1320.0
+
+[node name="Gate" type="MeshInstance3D" parent="GameWorld/CastleRoot/Castle"]
+    mesh = SubResource(313)
+    material_override = SubResource(320)
+    position = Vector3(0, 3.5, 16.5)
+    cast_shadow = true
+
+[node name="Entrance" type="Area3D" parent="GameWorld/CastleRoot/Castle"]
+    monitoring = true
+    position = Vector3(0, 4, 18.5)
+
+[node name="EntranceShape" type="CollisionShape3D" parent="GameWorld/CastleRoot/Castle/Entrance"]
+    shape = SubResource(307)
+
+[node name="SuctionZone" type="Area3D" parent="GameWorld/CastleRoot/Castle"]
+    monitoring = true
+    position = Vector3(0, 0, 8)
+
+[node name="SuctionShape" type="CollisionShape3D" parent="GameWorld/CastleRoot/Castle/SuctionZone"]
+    shape = SubResource(303)
+
+[node name="Throne" type="MeshInstance3D" parent="GameWorld/CastleRoot/Castle"]
+    mesh = SubResource(314)
+    material_override = SubResource(320)
+    position = Vector3(0, 2.5, -14)
+    cast_shadow = true
+
+[node name="ThroneSit" type="Area3D" parent="GameWorld/CastleRoot/Castle"]
+    monitoring = true
+    position = Vector3(0, 2.5, -14)
+
+[node name="ThroneSitShape" type="CollisionShape3D" parent="GameWorld/CastleRoot/Castle/ThroneSit"]
+    shape = SubResource(304)
+
+[node name="Wardrobe" type="MeshInstance3D" parent="GameWorld/CastleRoot/Castle"]
+    mesh = SubResource(315)
+    material_override = SubResource(326)
+    position = Vector3(-13, 1.5, 10)
+    cast_shadow = true
+
+[node name="WardrobeInteract" type="Area3D" parent="GameWorld/CastleRoot/Castle"]
+    monitoring = true
+    position = Vector3(-13, 1.5, 10)
+
+[node name="WardrobeShape" type="CollisionShape3D" parent="GameWorld/CastleRoot/Castle/WardrobeInteract"]
+    shape = SubResource(305)
+
+[node name="Rope1" type="StaticBody3D" parent="GameWorld/CastleRoot/Castle"]
+    position = Vector3(14, 12.5, 14)
+    collision_layer = 4
+    collision_mask = 1
+
+[node name="RopeMesh1" type="MeshInstance3D" parent="GameWorld/CastleRoot/Castle/Rope1"]
+    mesh = SubResource(318)
+    material_override = SubResource(327)
+    position = Vector3(0, 12.5, 0)
+    rotation_degrees = Vector3(90, 0, 0)
+    cast_shadow = true
+
+[node name="RopeCol1" type="CollisionShape3D" parent="GameWorld/CastleRoot/Castle/Rope1"]
+    shape = SubResource(306)
+
+[node name="Grab1" type="Area3D" parent="GameWorld/CastleRoot/Castle/Rope1"]
+    monitoring = true
+
+[node name="GrabShape1" type="CollisionShape3D" parent="GameWorld/CastleRoot/Castle/Rope1/Grab1"]
+    shape = SubResource(303)
+
+[node name="Rope2" type="StaticBody3D" parent="GameWorld/CastleRoot/Castle"]
+    position = Vector3(-14, 12.5, 14)
+    collision_layer = 4
+    collision_mask = 1
+
+[node name="RopeMesh2" type="MeshInstance3D" parent="GameWorld/CastleRoot/Castle/Rope2"]
+    mesh = SubResource(318)
+    material_override = SubResource(327)
+    position = Vector3(0, 12.5, 0)
+    rotation_degrees = Vector3(90, 0, 0)
+    cast_shadow = true
+
+[node name="RopeCol2" type="CollisionShape3D" parent="GameWorld/CastleRoot/Castle/Rope2"]
+    shape = SubResource(306)
+
+[node name="Grab2" type="Area3D" parent="GameWorld/CastleRoot/Castle/Rope2"]
+    monitoring = true
+
+[node name="GrabShape2" type="CollisionShape3D" parent="GameWorld/CastleRoot/Castle/Rope2/Grab2"]
+    shape = SubResource(303)
+
+[node name="Rope3" type="StaticBody3D" parent="GameWorld/CastleRoot/Castle"]
+    position = Vector3(14, 12.5, -14)
+    collision_layer = 4
+    collision_mask = 1
+
+[node name="RopeMesh3" type="MeshInstance3D" parent="GameWorld/CastleRoot/Castle/Rope3"]
+    mesh = SubResource(318)
+    material_override = SubResource(327)
+    position = Vector3(0, 12.5, 0)
+    rotation_degrees = Vector3(90, 0, 0)
+    cast_shadow = true
+
+[node name="RopeCol3" type="CollisionShape3D" parent="GameWorld/CastleRoot/Castle/Rope3"]
+    shape = SubResource(306)
+
+[node name="Grab3" type="Area3D" parent="GameWorld/CastleRoot/Castle/Rope3"]
+    monitoring = true
+
+[node name="GrabShape3" type="CollisionShape3D" parent="GameWorld/CastleRoot/Castle/Rope3/Grab3"]
+    shape = SubResource(303)
+
+[node name="Rope4" type="StaticBody3D" parent="GameWorld/CastleRoot/Castle"]
+    position = Vector3(-14, 12.5, -14)
+    collision_layer = 4
+    collision_mask = 1
+
+[node name="RopeMesh4" type="MeshInstance3D" parent="GameWorld/CastleRoot/Castle/Rope4"]
+    mesh = SubResource(318)
+    material_override = SubResource(327)
+    position = Vector3(0, 12.5, 0)
+    rotation_degrees = Vector3(90, 0, 0)
+    cast_shadow = true
+
+[node name="RopeCol4" type="CollisionShape3D" parent="GameWorld/CastleRoot/Castle/Rope4"]
+    shape = SubResource(306)
+
+[node name="Grab4" type="Area3D" parent="GameWorld/CastleRoot/Castle/Rope4"]
+    monitoring = true
+
+[node name="GrabShape4" type="CollisionShape3D" parent="GameWorld/CastleRoot/Castle/Rope4/Grab4"]
+    shape = SubResource(303)
+
+[node name="Player" type="CharacterBody3D" parent="GameWorld"]
+    script = ExtResource(6)
+    position = Vector3(50, 9, 0)
+    collision_layer = 1
+    collision_mask = 14
+
+[node name="BodyCol" type="CollisionShape3D" parent="GameWorld/Player"]
+    shape = SubResource(300)
+
+[node name="BodyMesh" type="MeshInstance3D" parent="GameWorld/Player"]
+    mesh = SubResource(316)
+    material_override = SubResource(325)
+    position = Vector3(0, 0.85, 0)
+
+[node name="CameraPivot" type="Node3D" parent="GameWorld/Player"]
+    position = Vector3(0, 1.0, 0)
+
+[node name="Camera" type="Camera3D" parent="GameWorld/Player/CameraPivot"]
+    position = Vector3(0, 1.3, -4.0)
+    rotation_degrees = Vector3(8, 0, 0)
+    fov = 45.0
+    current = true
+
+[node name="GrabPoint" type="Node3D" parent="GameWorld/Player"]
+    position = Vector3(0, 1.0, 0.5)
+
+[node name="RagdollHolder" type="Node" parent="GameWorld/Player"]
+
+[node name="GUI" type="CanvasLayer" parent="GameWorld"]
+
+[node name="Joystick" type="Control" parent="GameWorld/GUI"]
+    script = ExtResource(10)
+    rect_position = Vector2(40, 540)
+    rect_size = Vector2(170, 170)
+    mouse_filter = 0
+
+[node name="CameraArea" type="Control" parent="GameWorld/GUI"]
+    script = ExtResource(11)
+    rect_position = Vector2(660, 0)
+    rect_size = Vector2(620, 720)
+    mouse_filter = 0
+
+[node name="ButtonsLeft" type="Control" parent="GameWorld/GUI"]
+    rect_position = Vector2(10, 10)
+    rect_size = Vector2(270, 100)
+
+[node name="BtnHold" type="Button" parent="GameWorld/GUI/ButtonsLeft"]
+    rect_position = Vector2(0, 0)
+    rect_size = Vector2(250, 40)
+    text = «Не отпускай меня»
+
+[node name="BtnDebug" type="Button" parent="GameWorld/GUI/ButtonsLeft"]
+    rect_position = Vector2(0, 48)
+    rect_size = Vector2(250, 40)
+    text = Меню отладки
+
+[node name="ButtonsRight" type="Control" parent="GameWorld/GUI"]
+    rect_position = Vector2(1020, 360)
+    rect_size = Vector2(250, 280)
+
+[node name="BtnLie" type="Button" parent="GameWorld/GUI/ButtonsRight"]
+    rect_position = Vector2(0, 0)
+    rect_size = Vector2(230, 38)
+    text = Легть
+
+[node name="BtnCrawl" type="Button" parent="GameWorld/GUI/ButtonsRight"]
+    rect_position = Vector2(0, 46)
+    rect_size = Vector2(230, 38)
+    text = На четверьки
+
+[node name="BtnClimb" type="Button" parent="GameWorld/GUI/ButtonsRight"]
+    rect_position = Vector2(0, 92)
+    rect_size = Vector2(230, 38)
+    text = Вскарабаться
+
+[node name="BtnJump" type="Button" parent="GameWorld/GUI/ButtonsRight"]
+    rect_position = Vector2(0, 138)
+    rect_size = Vector2(230, 38)
+    text = Прыжок / Припрыжку
+
+[node name="BtnSqueeze" type="Button" parent="GameWorld/GUI/ButtonsRight"]
+    rect_position = Vector2(0, 184)
+    rect_size = Vector2(230, 38)
+    text = Тискать
+
+[node name="BtnSkirt" type="Button" parent="GameWorld/GUI/ButtonsRight"]
+    rect_position = Vector2(0, 230)
+    rect_size = Vector2(230, 38)
+    text = Задрать подол
+
+[node name="Hud" type="Control" parent="GameWorld/GUI"]
+    script = ExtResource(12)
+    anchors_preset = 15
+
+[node name="Info" type="Label" parent="GameWorld/GUI/Hud"]
+    rect_position = Vector2(10, 10)
+    rect_size = Vector2(400, 30)
+    text = Готов: Обычное
+

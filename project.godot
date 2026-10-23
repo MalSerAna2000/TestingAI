@@ -1,0 +1,42 @@
+engine_name="Godot"
+config_name="Godot Game"
+config_version=4
+
+[application]
+name="Темный Бог Надувных Замков"
+description="3D-прототип на Godot 4.7.2. НЗТБНЗ, сенсорное управление, процедурный мир, Jolt Physics, Aerodynamic Physics, рагдолл, смена суток."
+main_scene="res://scenes/MainMenu.tscn"
+
+[autoload]
+GameManager="res://scripts/game_manager.gd"
+AudioManager="res://scripts/audio_manager.gd"
+RagdollManager="res://scripts/ragdoll_manager.gd"
+
+[display]
+window/videomode/width=1280
+window/videomode/height=720
+window/videomode/width/editor=1280
+window/videomode/height/editor=720
+window/fullscreen=0
+window/resizable=true
+window/borderless=false
+
+[rendering]
+renderer/rendering_method="mobile"
+renderer/quality/directional_light/use_shadows=true
+renderer/quality/directional_light/use_contact_shadows=false
+
+[physics]
+3d/physics_engine=1
+3d/default_gravity=Vector3(0, -9.8, 0)
+3d/default_linear_damp=0.1
+3d/default_angular_damp=0.1
+
+[layer_names]
+3d_physics/0="Default"
+3d_physics/1="Player"
+3d_physics/2="Castle"
+3d_physics/3="Terrain"
+3d_physics/4="Rope"
+3d_physics/5="Interactable"
+3d_physics/6="Sensor"

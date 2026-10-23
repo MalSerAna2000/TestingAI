@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="4063739f65f54de78e505fdb6c5c946d"]
+
+[ext_resource path="res://scripts/chunk.gd" type="Script" id=9]
+
+[sub_resource type="PlaneMesh" id=317]
+    size = Vector2(64, 64)
+    subdivide_width = 32
+    subdivide_depth = 32
+
+[sub_resource type="SpatialMaterial" id=322]
+    albedo_color = Color(0.4, 0.7, 0.35, 1)
+    albedo_texture = ExtResource(100)
+    roughness = 1.0
+
+[node name="Chunk" type="StaticBody3D" parent="."]
+    script = ExtResource(9)
+    collision_layer = 3
+    collision_mask = 1
+
+[node name="Mesh" type="MeshInstance3D" parent="Chunk"]
+    mesh = SubResource(317)
+    material_override = SubResource(322)
+
+[node name="Shape" type="CollisionShape3D" parent="Chunk"]
+
